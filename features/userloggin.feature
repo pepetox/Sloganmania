@@ -1,4 +1,4 @@
- Feature: An user can register using his email, a selected password and an user name. The user name has to be unique.
+Feature: An user can register using his email, a selected password and an user name. The user name has to be unique.
    
 Scenario: An user can register using his email, a selected password and an not repeated username
 

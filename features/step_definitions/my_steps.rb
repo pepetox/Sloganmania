@@ -1,6 +1,6 @@
-Given(/^A signed in (.+)$/) do |user_type|
-  @user = create(user_type)
-  login_as(@user, :scope => :user)  
+Given(/^A signed in user$/) do
+  @user = create(:user)
+  login_as(@user)  
 end
 
 Given(/^A register user with username "(.*?)"$/) do |arg1|
@@ -66,11 +66,12 @@ end
 
 Then(/^I should see user email$/) do 
     if page.respond_to? :should
-    page.should have_content(current_user.email.to_s)
+    page.should have_content(@user.email.to_s)
   else
-    assert page.has_content?(current_user.to_s)
+    assert page.has_content?(@user.email.to_s)
   end
 end
+
 
 
 
