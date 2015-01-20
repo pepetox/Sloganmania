@@ -120,4 +120,13 @@ Then /^I should get a download with the filename "([^\"]*)"$/ do |filename|
   page.driver.response.headers['Content-Disposition'].should eq ("filename=\"#{filename}\"")  
 end
 
+Then(/^I should have one message published$/) do
+  
+  @user.messages.size.should eq(1)
+end
+
+Then(/^I should not have any message published$/) do
+  @user.messages.size.should eq(0)
+end
+
 

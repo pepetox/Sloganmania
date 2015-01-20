@@ -49,20 +49,14 @@
           <a class="brand" href="#">Sloganmania</a>
           <div class="container nav-collapse">
             <ul class="nav">
-
               <% if user_signed_in? %>
-                <li>
-                <%= current_user.email %>
-                </li>
-                <li>
-                <%= link_to(t('Logout'), destroy_user_session_path, :method => :delete) %>        
-                </li>
+                <li><%= link_to "Publish new slogan", new_message_path %></li>
+                <li><%= link_to(t('Logout'), destroy_user_session_path, :method => :delete) %> </li>    
+                <li><%= current_user.email %></li>
+                <li><%= link_to(t('Logout'), destroy_user_session_path, :method => :delete) %></li>   
               <% else %>
-                
                 <li><%= link_to "New user", new_user_registration_path  %></li>
                 <li><%= link_to "Login", new_user_session_path  %></li>
-                 
-                </li>
               <% end %>
             </ul>
           </div><!--/.nav-collapse -->
@@ -74,6 +68,7 @@
         <div class="row">
         <br><br>
           <div class="span12">
+           <p id="notice"><%= notice %></p>
             <%= bootstrap_flash %>
             <%= yield %>
           </div>
