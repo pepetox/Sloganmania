@@ -40,7 +40,7 @@ gem 'spring',        group: :development
 
 
 ##For styles
-gem 'pure-css-rails'
+gem "twitter-bootstrap-rails"
 
 #Autentification and authoritation
 

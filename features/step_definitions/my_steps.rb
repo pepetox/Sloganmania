@@ -27,6 +27,10 @@ When (/^(?:|I )click in "([^"]*)"$/) do |link|
   click_link(link)   
 end
 
+When /^(?:|I )fill in "([^"]*)" with "([^"]*)"$/ do |field, value|
+  fill_in(field, :with => value)
+end
+
 When(/^I click in the icon "(.*?)"$/) do |icon|
   
   
