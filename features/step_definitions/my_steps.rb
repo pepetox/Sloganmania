@@ -3,6 +3,10 @@ Given(/^A signed in (.+)$/) do |user_type|
   login_as(@user, :scope => :user)  
 end
 
+Given(/^A register user with username "(.*?)"$/) do |arg1|
+  create(:user, username: arg1) 
+end
+
 Given(/^A unsigned in user$/) do
   logout
 end
@@ -11,9 +15,6 @@ Given(/^I am on (.+)$/) do |page_name|
   visit path_to(page_name)  
 end
 
-Given(/^There is a (.+)$/) do |thing_name|
-  @thing_name = create(thing_name.to_s)
-end
 
 When(/^I go to (.+)$/) do |page_name|
   visit path_to(page_name)  

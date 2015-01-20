@@ -22,28 +22,8 @@ module NavigationHelpers
     when /^the sign_in page$/
       '/users/sign_in'
 
-    when /^the action_types page$/
-      '/action_types'  
-
-    when /^the groups page$/
-      '/groups'  
-
-    when /^the new groups page$/
-      '/groups/new'  
-    
-    when /^the edit group page$/
-      '/groups/new'
-
-    when /^the customer page$/
-      '/customers'
-    
-    when /^the gruposyclientes page$/  
-      '/customer_groups'
-
-    when /^the elements type page$/  
-      '/element_types'
-      
-
+    when /^the sign_up page$/
+      '/users'
 
 
     # Add more mappings here.
