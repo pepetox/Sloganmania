@@ -36,7 +36,9 @@ When(/^I click in the icon "(.*?)"$/) do |icon|
   
   puts page.find(".#{icon}")
 end
-
+When /^I submit the form$/ do
+  page.evaluate_script("document.forms[0].submit()")
+end
 
 Then (/^(?:|I )should be on (.+)$/) do |page_name|
   current_path = URI.parse(current_url).path
@@ -63,9 +65,9 @@ end
 
 Then(/^I should see user email$/) do 
     if page.respond_to? :should
-    page.should have_content(@user.email.to_s)
+    page.should have_content(current_user.email.to_s)
   else
-    assert page.has_content?(@user.email.to_s)
+    assert page.has_content?(current_user.to_s)
   end
 end
 
