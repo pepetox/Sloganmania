@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   post 'users/follow'
 
-  
+  resources :relationships,  only: [:create, :destroy]
   resources :messages
 
   devise_for :users

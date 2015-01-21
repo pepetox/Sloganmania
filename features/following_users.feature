@@ -7,6 +7,5 @@ And A signed in user
 When I go to the home page
 And I click in "Users"
 And I click in "plat161"
-Then show me the page
-And I press "follow"
+And I press "Follow"
 Then I should follow 1 user

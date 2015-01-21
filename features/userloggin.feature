@@ -19,7 +19,6 @@ Scenario: An user can't register using an already taken username
   And A unsigned in user
   When I go to the home page
   And I click in "New user"
-  Then show me the page
   And I fill in "Email" with "myname@mycompany.com"
   And I fill in "Username" with "myname"
   And I fill in "Password" with "secretsecret"
