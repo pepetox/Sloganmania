@@ -1,0 +1,19 @@
+<h1>Sloganers</h1>
+
+  <% @sloganers.each do |sloganer| %>
+  <div class="well">
+    <span class="badge"><%= sloganer.messages.size  %></span>
+    <%= link_to sloganer.username, sloganer_path(sloganer) %>
+    
+    <% if current_user  %>
+      <%= form_for(current_user.active_relationships.build) do |f| %>
+        <%= hidden_field_tag :followed_id, sloganer.id %>
+        <%= f.submit "Follow", class: "btn btn-primary" %>
+      <% end %>
+    <% end %>
+  </div>
+  <% end %>
+
+
+  
+
