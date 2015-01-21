@@ -1,14 +1,31 @@
 
 <h1><%= @sloganer.username  %></h1>
-<div class="well">
-    <span class="badge"><%= @sloganer.messages.size  %></span>
-    
-    <% if current_user  %>
-      <%= form_for(current_user.active_relationships.build) do |f| %>
-        <%= hidden_field_tag :followed_id, @sloganer.id %>
-        <%= f.submit "Follow", class: "btn btn-primary" %>
-      <% end %>
-    <% end %>
+
+<span class="badge"><%= @sloganer.messages.size  %></span>   
+<% if current_user  %>
+  <%= form_for(current_user.active_relationships.build) do |f| %>
+    <%= hidden_field_tag :followed_id, @sloganer.id %>
+    <%= f.submit "Follow", class: "btn btn-primary" %>
+  <% end %>
+<% end %>
+  
+<h2>Slogans</h2>
+<%  @sloganer.messages.each do |msg| %>
+  <div class="well">
+    <%= msg.content  %>
   </div>
+<% end %>
 
+<h2>Folowing to: </h2>
+<%  @sloganer.following.each do |following| %>
+  <div class="well">
+    <%= following.username  %>
+  </div>
+<% end %>
 
+<h2>Followed by: </h2>
+<%  @sloganer.followers.each do |follower| %>
+  <div class="well">
+    <%= follower.username  %>
+  </div>
+<% end %>

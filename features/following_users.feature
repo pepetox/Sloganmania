@@ -8,4 +8,5 @@ When I go to the home page
 And I click in "Users"
 And I click in "platform161"
 And I press "Follow"
-Then I should see "my slogan number 2"
+Then I should see "my slogan "
+Then I should see "platform161"

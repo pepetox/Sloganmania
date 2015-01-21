@@ -26,6 +26,12 @@ Given(/^The singed user follow the other user$/) do
   @user.follow(@another_user_with_slogans)
 end
 
+Given(/^Another registered user with username "(.*?)" is following "(.*?)"$/) do |arg1, arg2|
+  @followeruser = create(:user, username: arg1) 
+  @followeruser.follow(@another_user)
+ 
+end
+
 When(/^I go to (.+)$/) do |page_name|
   visit path_to(page_name)  
 end
