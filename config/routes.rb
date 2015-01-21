@@ -1,7 +1,18 @@
 Rails.application.routes.draw do
-  resources :messages
+  
 
+
+  post 'users/follow'
+  resources :relationships,  only: [:create, :destroy]
+  resources :messages
+  resources :sloganers,  only: [:show, :index] do
+    member do
+      get :following, :followers
+    end
+  end
+  
   devise_for :users
+  
   get 'welcome/index'
 
   # The priority is based upon order of creation: first created -> highest priority.

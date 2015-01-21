@@ -21,6 +21,5 @@ Scenario: A login user can't publish a message if is longer than 160 characters
    And press "Create Message"
    Then I should be on the messages page 
    And I should not have any message published
-   Then show me the page
    And I should see "Content 160 characters is the maximum allowed Message"
 

@@ -4,7 +4,7 @@ Given(/^A signed in user$/) do
 end
 
 Given(/^A register user with username "(.*?)"$/) do |arg1|
-  create(:user, username: arg1) 
+  @another_user = create(:user, username: arg1) 
 end
 
 Given(/^A unsigned in user$/) do
@@ -129,4 +129,7 @@ Then(/^I should not have any message published$/) do
   @user.messages.size.should eq(0)
 end
 
-
+Then(/^I should follow (\d+) user$/) do |arg1|
+  @user.following.include?(@another_user).should eq(true)
+  
+end
