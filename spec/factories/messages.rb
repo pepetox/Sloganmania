@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :message do
-    content "MyString"
-user nil
+    sequence(:content) { |n| "my slogan number #{n}" }
+    user 
   end
 
 end

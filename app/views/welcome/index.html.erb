@@ -1,2 +1,12 @@
-<h1>Welcome to Slogan mani</h1>
-<p>This is your timeline</p>
+<h1>Welcome to Slogan mania</h1>
+
+<% if user_signed_in? %>
+  <h3>This is your timeline:</h3>
+
+  <% @timeline_messages.each do |message| %>
+    <div class="well">
+      <%= message.content  %> by:
+      <%= link_to message.user.username, sloganer_path(message.user) %>
+    </div>
+  <% end %>
+<% end %>

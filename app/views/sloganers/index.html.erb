@@ -5,7 +5,7 @@
     <span class="badge"><%= sloganer.messages.size  %></span>
     <%= link_to sloganer.username, sloganer_path(sloganer) %>
     
-    <% if current_user  %>
+    <% if current_user && current_user != sloganer && !(current_user.following? (sloganer))%>
       <%= form_for(current_user.active_relationships.build) do |f| %>
         <%= hidden_field_tag :followed_id, sloganer.id %>
         <%= f.submit "Follow", class: "btn btn-primary" %>

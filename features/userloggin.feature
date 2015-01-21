@@ -15,7 +15,7 @@ Scenario: An user can register using his email, a selected password and an not r
 
 Scenario: An user can't register using an already taken username
 
-  Given A register user with username "myname"
+  Given A registered user with username "myname"
   And A unsigned in user
   When I go to the home page
   And I click in "New user"

@@ -3,8 +3,9 @@ Given(/^A signed in user$/) do
   login_as(@user)  
 end
 
-Given(/^A register user with username "(.*?)"$/) do |arg1|
+Given(/^A registered user with username "(.*?)"$/) do |arg1|
   @another_user = create(:user, username: arg1) 
+  create_list(:message, 3, user: @another_user)
 end
 
 Given(/^A unsigned in user$/) do
@@ -15,6 +16,15 @@ Given(/^I am on (.+)$/) do |page_name|
   visit path_to(page_name)  
 end
 
+Given(/^A registered user with slogans$/) do
+  @another_user_with_slogans = create(:user, username: 'plat161')
+  create_list(:message, 30, user: @another_user_with_slogans)
+
+end
+
+Given(/^The singed user follow the other user$/) do
+  @user.follow(@another_user_with_slogans)
+end
 
 When(/^I go to (.+)$/) do |page_name|
   visit path_to(page_name)  
@@ -33,8 +43,6 @@ When /^(?:|I )fill in "([^"]*)" with "([^"]*)"$/ do |field, value|
 end
 
 When(/^I click in the icon "(.*?)"$/) do |icon|
-  
-  
   puts page.find(".#{icon}")
 end
 When /^I submit the form$/ do
@@ -130,6 +138,16 @@ Then(/^I should not have any message published$/) do
 end
 
 Then(/^I should follow (\d+) user$/) do |arg1|
-  @user.following.include?(@another_user).should eq(true)
-  
+  #@user.following.include?(@another_user).should eq(true)
+  @user.following.size.should eq(1)
+end
+
+Then(/^I should see that slogans$/) do
+  @another_user_with_slogans.messages.each do |message|
+    if page.respond_to? :should
+      page.should have_content(message.content)
+    else
+      assert page.has_content?(message.content)
+    end
+  end
 end
