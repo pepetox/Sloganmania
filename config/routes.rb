@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
 
-  resources :users, only: [:index, :show]
+  get 'users/index'
+
+  get 'users/show'
+
+  post 'users/follow'
+
+  
   resources :messages
 
   devise_for :users

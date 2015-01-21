@@ -129,4 +129,6 @@ Then(/^I should not have any message published$/) do
   @user.messages.size.should eq(0)
 end
 
-
+Then(/^I should follow (\d+) user$/) do |arg1|
+  
+end

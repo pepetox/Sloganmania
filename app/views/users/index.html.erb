@@ -1,0 +1,10 @@
+<%- model_class = Message -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<ul>
+<% @users.each do |user| %>
+  <li><%= link_to user.username, users_show_path({id: user}) %>   <button><%= button_to "follow", users_follow_path({id: user}) %></button></li>
+
+<% end %>
+</ul>
