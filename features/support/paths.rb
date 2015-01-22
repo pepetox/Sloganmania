@@ -25,7 +25,7 @@ module NavigationHelpers
     when /^the sign_up page$/
       '/users'
     when /^the messages page$/
-      '/messages'
+      '/sloganers/1/messages'
 
 
     # Add more mappings here.

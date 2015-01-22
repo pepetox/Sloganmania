@@ -4,10 +4,11 @@ Rails.application.routes.draw do
 
   post 'users/follow'
   resources :relationships,  only: [:create, :destroy]
-  resources :messages
+  
   resources :sloganers,  only: [:show, :index] do
     member do
       get :following, :followers
+      resources :messages
     end
   end
   
