@@ -55,6 +55,34 @@ When /^I submit the form$/ do
   page.evaluate_script("document.forms[0].submit()")
 end
 
+When(/^comes a request for the messages of an user$/) do
+  @response = get '/sloganers/plat161/messages.json' 
+end
+
+When(/^comes a request for the followers of the first user$/) do
+  @response = get '/sloganers/plat161/followers.json' 
+end
+
+When(/^comes a request for the following of the "(.*?)"$/) do |arg1|
+  @response = get '/sloganers/media161/following.json'
+end
+
+Then(/^the API answer a JSON with the following of that user$/) do
+  @response.status.should eq(200)
+   @response.content_type.should eq('application/json; charset=utf-8')
+end
+Then(/^the API answer a JSON with the messages of that user$/) do
+   # express the regexp above with the code you wish you had
+   @response.status.should eq(200)
+   @response.content_type.should eq('application/json; charset=utf-8')
+   @response.body.should eq(@another_user_with_slogans.messages.to_json)
+end
+
+Then(/^the API answer a JSON with the followers of that user$/) do
+  @response.status.should eq(200)
+  @response.content_type.should eq('application/json; charset=utf-8')
+end
+
 Then (/^(?:|I )should be on (.+)$/) do |page_name|
   current_path = URI.parse(current_url).path
   if current_path.respond_to? :should

@@ -6,7 +6,7 @@
   <% @timeline_messages.each do |message| %>
     <div class="well">
       <%= message.content  %> by:
-      <%= link_to message.user.username, sloganer_path(message.user) %>
+      <%= link_to message.user.username, sloganer_path(message.user.username) %>
     </div>
   <% end %>
 <% end %>
