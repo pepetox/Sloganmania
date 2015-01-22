@@ -1,4 +1,4 @@
-<h1>Welcome to Slogan mania</h1>
+<h1>Welcome to Sloganmania</h1>
 
 <% if user_signed_in? %>
   <h3>This is your timeline:</h3>
@@ -6,7 +6,18 @@
   <% @timeline_messages.each do |message| %>
     <div class="well">
       <%= message.content  %> by:
-      <%= link_to message.user.username, sloganer_path(message.user.username) %>
+      <%= link_to message.user.username, sloganer_path(message.user.username) %> on: 
+      <%= l message.created_at %>
+
     </div>
   <% end %>
+<% else %>
+<h3>Please login to see your timeline</h3>
+<% end %>
+<h4>Lastest slogans</h4>
+<% @last_slogans.each do |slogans| %>
+    <div class="well">
+      
+      <%= slogans.content %> by: <%= link_to slogans.user.username , sloganer_path(slogans.user.username ) %>
+    </div>
 <% end %>

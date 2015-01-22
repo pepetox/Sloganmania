@@ -1,0 +1,7 @@
+<h1>Followers of <%= @sloganer.username  %></h1>
+
+<%  @followers.each do |follower| %>
+  <div class="well">
+    <%= link_to follower.username, sloganer_path(follower.username) %>
+  </div>
+<% end %>

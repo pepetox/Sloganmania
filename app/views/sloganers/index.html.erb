@@ -2,8 +2,10 @@
 
   <% @sloganers.each do |sloganer| %>
   <div class="well">
+   
+    <strong><%= link_to sloganer.username, sloganer_path(sloganer.username) %></strong>
+    Nº of Slogans
     <span class="badge"><%= sloganer.messages.size  %></span>
-    <%= link_to sloganer.username, sloganer_path(sloganer.username) %>
     
     <% if current_user && current_user != sloganer && !(current_user.following? (sloganer))%>
       <%= form_for(current_user.active_relationships.build) do |f| %>

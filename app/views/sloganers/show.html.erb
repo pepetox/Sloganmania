@@ -1,8 +1,7 @@
 
 <h1><%= @sloganer.username  %></h1>
 
-<span class="badge"><%= @sloganer.messages.size  %></span>   
-<% if current_user  %>
+<% if current_user && current_user != @sloganer && !(current_user.following? (@sloganer))%>
   <%= form_for(current_user.active_relationships.build) do |f| %>
     <%= hidden_field_tag :followed_id, @sloganer.id %>
     <%= f.submit "Follow", class: "btn btn-primary" %>
@@ -16,16 +15,20 @@
   </div>
 <% end %>
 
-<h2>Folowing to: </h2>
+<h2><%= link_to "Folowing to:", following_sloganer_path(@sloganer.username) %>  </h2>
 <%  @sloganer.following.each do |following| %>
   <div class="well">
-    <%= following.username  %>
+    <%= link_to following.username, sloganer_path(following.username) %>
   </div>
 <% end %>
 
-<h2>Followed by: </h2>
+<h2><%= link_to "Followed by:", followers_sloganer_path(@sloganer.username) %>  </h2>
 <%  @sloganer.followers.each do |follower| %>
   <div class="well">
-    <%= follower.username  %>
+    <%= link_to follower.username, sloganer_path(follower.username) %>
   </div>
 <% end %>
+
+<%= link_to "Publish new slogan", new_message_path(current_user), class: "btn btn-primary" if current_user == @sloganer %>
+
+  

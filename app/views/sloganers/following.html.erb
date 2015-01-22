@@ -1,0 +1,7 @@
+<h1>Following <%= @sloganer.username  %></h1>
+
+<%  @following.each do |following| %>
+  <div class="well">
+    <%= link_to following.username, sloganer_path(@sloganer.username) %>
+  </div>
+<% end %>
