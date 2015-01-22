@@ -8,6 +8,6 @@ class SloganersController < ApplicationController
   end
   private
     def set_message
-      @sloganer = User.find(params[:id])
+      @sloganer = User.find_by(username: params[:username])
     end
 end

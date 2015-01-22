@@ -1,11 +1,11 @@
 class MessagesController < ApplicationController
   before_action :set_message, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
+   before_action :set_sloganer, except: :new
+  before_action :authenticate_user!, except: :index
   respond_to :html
 
   def index
-    @messages = Message.all
-    respond_with(@messages)
+    @messages = @sloganer.messages
   end
 
   def show
@@ -46,8 +46,11 @@ class MessagesController < ApplicationController
     def set_message
       @message = Message.find(params[:id])
     end
-
+    def set_sloganer
+     @sloganer = User.find_by(username: params[:username])
+    end
     def message_params
       params.require(:message).permit(:content)
     end
 end
+
